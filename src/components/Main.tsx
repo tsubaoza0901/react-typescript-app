@@ -5,8 +5,8 @@ import { GoMail } from 'react-icons/go';
 import { BsFillPeopleFill } from 'react-icons/bs';
 import Profile from './Profile';
 import ProfileManager from './ProfileManager';
-// import Ask from './Ask';
-// import InboxDM from './InboxDM';
+import Ask from './Ask';
+import InboxDM from './InboxDM';
 
 const Main: React.FC = () => {
   const { profiles, profile, askList, askListFull, inbox } = useContext(
@@ -49,20 +49,24 @@ const Main: React.FC = () => {
           Approval request list
         </h3>
         <div className="app-details">
-          {/* <div className="task-list">
+          <div className="task-list">
             <ul>
-              {profile.id &&
-                askList.map((ask) => (
-                  <Ask
-                    key={ask.id}
-                    ask={ask}
-                    prof={profiles.filter((item) => {
-                      return item.userPro === ask.askFrom;
-                    })}
-                  />
-                ))}
+              {
+                // TODO:型を確定させる
+                profile.id &&
+                  askList.map((ask: any) => (
+                    <Ask
+                      key={ask.id}
+                      ask={ask}
+                      // TODO:型を確定させる
+                      prof={profiles.filter((item: any) => {
+                        return item.userPro === ask.askFrom;
+                      })}
+                    />
+                  ))
+              }
             </ul>
-          </div> */}
+          </div>
         </div>
       </Grid>
 
@@ -72,20 +76,24 @@ const Main: React.FC = () => {
           DM Inbox
         </h3>
         <div className="app-dms">
-          {/* <div className="task-list">
+          <div className="task-list">
             <ul>
-              {profile.id &&
-                inbox.map((dm) => (
-                  <InboxDM
-                    key={dm.id}
-                    dm={dm}
-                    prof={profiles.filter((item) => {
-                      return item.userPro === dm.sender;
-                    })}
-                  />
-                ))}
+              {
+                // TODO:型を確定させる
+                profile.id &&
+                  inbox.map((dm: any) => (
+                    <InboxDM
+                      key={dm.id}
+                      dm={dm}
+                      // TODO:型を確定させる
+                      prof={profiles.filter((item: any) => {
+                        return item.userPro === dm.sender;
+                      })}
+                    />
+                  ))
+              }
             </ul>
-          </div> */}
+          </div>
         </div>
       </Grid>
     </Grid>

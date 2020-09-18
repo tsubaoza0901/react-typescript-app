@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// 型を確定させる
+// TODO:型を確定させる
 interface Props {
   profileData: any;
   askData: any;
