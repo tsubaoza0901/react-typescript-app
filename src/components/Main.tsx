@@ -3,36 +3,39 @@ import { ApiContext } from '../context/ApiContext';
 import Grid from '@material-ui/core/Grid';
 import { GoMail } from 'react-icons/go';
 import { BsFillPeopleFill } from 'react-icons/bs';
-// import Profile from './Profile';
+import Profile from './Profile';
 // import ProfileManager from './ProfileManager';
 // import Ask from './Ask';
 // import InboxDM from './InboxDM';
 
-const Main = () => {
-  // const { profiles, profile, askList, askListFull, inbox } = useContext(
-  //   ApiContext
-  // );
-  // const filterProfiles = profiles.filter((prof) => {
-  //   return prof.id !== profile.id;
-  // });
-  // const listProfiles =
-  //   filterProfiles &&
-  //   filterProfiles.map((filprof) => (
-  //     <Profile
-  //       key={filprof.id}
-  //       profileData={filprof}
-  //       askData={askListFull.filter((ask) => {
-  //         return (
-  //           (filprof.userPro === ask.askFrom) | (filprof.userPro === ask.askTo)
-  //         );
-  //       })}
-  //     />
-  //   ));
+const Main: React.FC = () => {
+  const { profiles, profile, askList, askListFull, inbox } = useContext(
+    ApiContext
+  );
+  // TODO:型を確定させる
+  const filterProfiles = profiles.filter((prof: any) => {
+    return prof.id !== profile.id;
+  });
+  // TODO:型を確定させる
+  const listProfiles =
+    filterProfiles &&
+    filterProfiles.map((filprof: any) => (
+      // TODO:型を確定させる
+      <Profile
+        key={filprof.id}
+        profileData={filprof}
+        askData={askListFull.filter((ask: any) => {
+          return (
+            filprof.userPro === ask.askFrom || filprof.userPro === ask.askTo // TypeScriptの場合には「|」は使用できないため、「||」にする
+          );
+        })}
+      />
+    ));
   return (
     <Grid container>
       <Grid item xs={4}>
         <div className="app-profiles">
-          {/* <div className="task-list">{listProfiles}</div> */}
+          <div className="task-list">{listProfiles}</div>
         </div>
       </Grid>
 
