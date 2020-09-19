@@ -86,7 +86,7 @@ interface StringKeyObject {
   [key: string]: string;
 }
 
-// TODO: actionの型をきちんと設定する（現状は、LoginActionを使うとActionTypeでつまづく、、）
+// TODO: 型を確定させる（現状は、LoginActionを使うとActionTypeでつまづく、、）
 const loginReducer = (state: typeof initialState, action: any) => {
   switch (action.type) {
     case START_FETCH: {
